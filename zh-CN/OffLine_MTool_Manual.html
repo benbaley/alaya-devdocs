@@ -228,6 +228,7 @@ wallet created at: $MTOOLDIR/keystore/staking_observed.json</p>
 </ul>
 <blockquote>
 <p>$keystorename：钱包文件名称，如staking.json</p>
+<p>config：验证节点信息文件路径</p>
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" id="根据地址查询余额"></a><a href="#根据地址查询余额" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>根据地址查询余额</h3>
 <ul>
@@ -240,6 +241,7 @@ wallet created at: $MTOOLDIR/keystore/staking_observed.json</p>
 </ul>
 <blockquote>
 <p>a：钱包地址</p>
+<p>config：验证节点信息文件路径</p>
 </blockquote>
 <h2><a class="anchor" aria-hidden="true" id="离线mtool交易流程"></a><a href="#离线mtool交易流程" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>离线MTool交易流程</h2>
 <p>MTool离线签名方式主要流程为：在在线机器上生成待签名文件，然后在离线机器上签名交易，最后在在线机器上发送签名交易。以转账交易为例，步骤如下，其他交易生成待签名文件的操作参考[MTool交易命令详解](# MTool交易命令详解)章节。</p>
@@ -251,9 +253,10 @@ wallet created at: $MTOOLDIR/keystore/staking_observed.json</p>
 <li>参数说明:</li>
 </ul>
 <blockquote>
-<p>address：发送交易的观察钱包路径;</p>
-<p>amount：转账金额，单位：ATP；</p>
-<p>recipient：接收地址；</p>
+<p>address：发送交易的观察钱包路径</p>
+<p>amount：转账金额，单位：ATP</p>
+<p>recipient：接收地址</p>
+<p>config：验证节点信息文件路径</p>
 </blockquote>
 <p>打印如下信息，表示执行成功：</p>
 <pre><code class="hljs css language-shell">Transfer unsigned raw: H4sIAAAAAAAAAGWOPW/DIBRF/8ubPfDhGsdrp0oZMmSrMiCMDUGADTiGRPnvoVGHSn3T1ZHuPe8Ba/j0ozwH7iIXSXt31DHB8P0Abv3masTo3zUgFNfua4SBIIxoBVPwFgbgKeM9pLweppERJTrGXH+n1KY+5Wtujckfy247JqF2NvdWnssiYagjM49HbXWVEvzWVHAKWsg/XzTgvPshtIHkf5UlxKL2tBVkCJnZnNWtm/dyn/qbiIdrNHFlysDzUjvaypi4Xepmh2jbMor6luLnC0n7ZKsMAQAA
@@ -264,6 +267,13 @@ File generated on: $MTOOLDIR/transaction_details/transaction_detail_201911081142
 <p>在保管冷钱包的离线机器上执行：</p>
 <pre><code class="hljs css language-shell">mtool-client offlinesign --filelocation $MTOOLDIR/transaction_details/transaction_detail_20191108114241.csv
 </code></pre>
+<ul>
+<li>参数说明：</li>
+</ul>
+<blockquote>
+<p>offlinesign：离线签名标识</p>
+<p>filelocation：待签名交易文件路径</p>
+</blockquote>
 <p>注：$MTOOLDIR/transaction_details/transaction_detail_20191108114241.csv为上一步骤生成的待签名文件，修改为实际的待签名文件。</p>
 <p>输入对应冷钱包密码并返回签完名的文件，文件内容如下：</p>
 <pre><code class="hljs css language-shell"> ┌────────┬────────┬────────┬────────┬────────┬────────┬────────┬───────┬───────┐
@@ -290,6 +300,14 @@ success: 1, failure: 0
 <p>在<strong>在线机器</strong>发送交易：</p>
 <pre><code class="hljs css language-shell">mtool-client send_signedtx --filelocation $MTOOLDIR/transaction_signature/transaction_signature_20191108114625.csv --config $MTOOLDIR/validator/validator_config.json
 </code></pre>
+<ul>
+<li>参数说明：</li>
+</ul>
+<blockquote>
+<p>send_signedtx：发送签名交易标识</p>
+<p>filelocation：已签名交易文件路径</p>
+<p>config：验证节点信息文件路径</p>
+</blockquote>
 <p>注：其中transaction_signature_20191108114625.csv为上一步骤生成的交易签名文件，修改为实际的签名文件。</p>
 <p>输入<code>yes</code>返回交易结果：</p>
 <pre><code class="hljs css language-bash">Send Transaction? (yes|no)
@@ -313,9 +331,10 @@ success: 1, failure: 0
 <li>参数说明</li>
 </ul>
 <blockquote>
-<p>address：发送交易的观察钱包路径;</p>
-<p>amount：转账金额，单位：ATP；</p>
-<p>recipient：接收地址；</p>
+<p>address：发送交易的观察钱包路径</p>
+<p>amount：转账金额，单位：ATP</p>
+<p>recipient：接收地址</p>
+<p>config：验证节点信息文件路径</p>
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" id="发起质押操作"></a><a href="#发起质押操作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>发起质押操作</h3>
 <p>如果共识节点部署完成，并且已经同步区块成功，您就可以使用MTool进行质押操作。质押资金申请完成后，确保质押账户余额足够，根据用户情况替换质押金额，质押最低门槛为1万ATP。</p>
@@ -332,6 +351,7 @@ success: 1, failure: 0
 <p>address: 质押观察钱包路径</p>
 <p>amount: 质押数，不少于1000000lat-质押门槛，小数点不超过8位（使用自由金额质押）</p>
 <p>restrictedamount: 不少于1000000lat-质押门槛，小数点不超过8位（使用锁仓余额质押）</p>
+<p>config：验证节点信息文件路径</p>
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" id="修改验证人信息操作"></a><a href="#修改验证人信息操作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>修改验证人信息操作</h3>
 <ul>
@@ -345,13 +365,15 @@ success: 1, failure: 0
 <blockquote>
 <p>name：验证人名称，不超过30字节，支持字母、数字、空格、上下划线及#，必须字母开头</p>
 <p>url：官网路径，不超过70字节，数字字母组成</p>
-<p>identity：身份认证ID，不超过140字节，对应validator_config.json配置文件中的<code>externalId</code>字段。</p>
+<p>identity：身份认证ID，不超过140字节，对应validator_config.json配置文件中的<code>externalId</code>字段</p>
 <p>delegated-reward-rate：委托奖励比例，单位：万分比，整数，范围0~10000，如输入5000，表示分红比例为50%</p>
 <p>reward：收益地址，42字符（字母数字）</p>
 <p>introduction：简介，验证人简要介绍说明，不超过280字节，建议英文</p>
+<p>config：验证节点信息文件路径</p>
 <p>a：执行命令时，用配置文件里面的值作参数去修改验证人信息</p>
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" id="解质押操作"></a><a href="#解质押操作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>解质押操作</h3>
+<p><font color=red><strong>解质押需要168个结算周期才能退出完成，请谨慎操作！</strong></font></p>
 <ul>
 <li>执行命令</li>
 </ul>
@@ -361,7 +383,8 @@ success: 1, failure: 0
 <li>参数说明</li>
 </ul>
 <blockquote>
-<p>无</p>
+<p>address：发送交易的观察钱包路径</p>
+<p>config：验证节点信息文件路径</p>
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" id="增加质押操作"></a><a href="#增加质押操作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>增加质押操作</h3>
 <ul>
@@ -375,6 +398,8 @@ success: 1, failure: 0
 <blockquote>
 <p>amount：用账户余额来增加质押量(ATP)，不少于10最小增加值，小数点不超过8位</p>
 <p>restrictedamount： 用账户锁仓余额来增加质押量，不少于10质押门槛，小数点不超过8位（使用锁仓余额质押）</p>
+<p>address：发送交易的观察钱包路径</p>
+<p>config：验证节点信息文件路径</p>
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" id="提交文本提案操作"></a><a href="#提交文本提案操作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>提交文本提案操作</h3>
 <ul>
@@ -387,6 +412,8 @@ success: 1, failure: 0
 </ul>
 <blockquote>
 <p>pid_id：GitHub ID</p>
+<p>address：发送交易的观察钱包路径</p>
+<p>config：验证节点信息文件路径</p>
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" id="提交升级提案操作"></a><a href="#提交升级提案操作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>提交升级提案操作</h3>
 <ul>
@@ -401,6 +428,8 @@ success: 1, failure: 0
 <p>newversion：目标升级版本，x.x.x，数字加标点</p>
 <p>end_voting_rounds：投票共识轮数，投票共识轮数N，必须满足0 &lt; N &lt;= 4838（约为2周）</p>
 <p>pid_id：GitHub ID</p>
+<p>address：发送交易的观察钱包路径</p>
+<p>config：验证节点信息文件路径</p>
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" id="提交取消提案操作"></a><a href="#提交取消提案操作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>提交取消提案操作</h3>
 <ul>
@@ -415,6 +444,8 @@ success: 1, failure: 0
 <p>proposalid：需要被取消的提案ID，即发起提案交易的hash，66字符，字母数字组成</p>
 <p>end_voting_rounds：投票共识轮数，投票共识轮数N，必须满足0 &lt; N &lt;= 4838（约为2周）</p>
 <p>pid_id：GitHub ID</p>
+<p>address：发送交易的观察钱包路径</p>
+<p>config：验证节点信息文件路径</p>
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" id="文本提案投票操作"></a><a href="#文本提案投票操作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>文本提案投票操作</h3>
 <ul>
@@ -428,6 +459,8 @@ success: 1, failure: 0
 <blockquote>
 <p>proposalid：文本提案ID，即发起提案交易的hash，66字符，字母数字组成</p>
 <p>opinion：投票选项，yes、no、abstain-三选一</p>
+<p>address：发送交易的观察钱包路径</p>
+<p>config：验证节点信息文件路径</p>
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" id="升级提案投票操作"></a><a href="#升级提案投票操作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>升级提案投票操作</h3>
 <ul>
@@ -440,6 +473,8 @@ success: 1, failure: 0
 </ul>
 <blockquote>
 <p>proposalid：升级提案ID，即发起提案交易的hash，66字符，字母数字组成</p>
+<p>address：发送交易的观察钱包路径</p>
+<p>config：验证节点信息文件路径</p>
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" id="取消提案投票操作"></a><a href="#取消提案投票操作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>取消提案投票操作</h3>
 <ul>
@@ -453,6 +488,8 @@ success: 1, failure: 0
 <blockquote>
 <p>proposalid：取消提案ID，即发起提案交易的hash，66字符，字母数字组成</p>
 <p>opinion：投票选项，yes、no、abstain-三选一</p>
+<p>address：发送交易的观察钱包路径</p>
+<p>config：验证节点信息文件路径</p>
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" id="提交参数提案操作"></a><a href="#提交参数提案操作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>提交参数提案操作</h3>
 <ul>
@@ -468,6 +505,8 @@ success: 1, failure: 0
 <p>paramname：治理模块参数名，注意字母大小写</p>
 <p>paramvalue：治理模块参数值</p>
 <p>pid_id：GitHub ID</p>
+<p>address：发送交易的观察钱包路径</p>
+<p>config：验证节点信息文件路径</p>
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" id="参数提案投票操作"></a><a href="#参数提案投票操作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>参数提案投票操作</h3>
 <ul>
@@ -481,6 +520,8 @@ success: 1, failure: 0
 <blockquote>
 <p>proposalid：取消提案ID，即发起提案交易的hash，66字符，字母数字组成</p>
 <p>opinion：投票选项，yes、no、abstain-三选一</p>
+<p>address：发送交易的观察钱包路径</p>
+<p>config：验证节点信息文件路径</p>
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" id="版本声明操作"></a><a href="#版本声明操作" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>版本声明操作</h3>
 <ul>
@@ -492,7 +533,8 @@ success: 1, failure: 0
 <li>参数说明</li>
 </ul>
 <blockquote>
-<p>无</p>
+<p>address：发送交易的观察钱包路径</p>
+<p>config：验证节点信息文件路径</p>
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" id="查看帮助"></a><a href="#查看帮助" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>查看帮助</h3>
 <ul>
