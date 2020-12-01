@@ -241,16 +241,16 @@ Enter your 64bit Private Key:
 <pre><code class="hljs css language-json">{
   <span class="hljs-attr">"account"</span>:<span class="hljs-string">"atp12jn6835z96ez93flwezrwu4xpv8e4zatwxj7ju"</span>,
   <span class="hljs-attr">"plans"</span>:[
-    {<span class="hljs-attr">"epoch"</span>: <span class="hljs-number">5000</span>,<span class="hljs-attr">"amount"</span>: <span class="hljs-number">1800000000000000</span>},
-    {<span class="hljs-attr">"epoch"</span>: <span class="hljs-number">6000</span>,<span class="hljs-attr">"amount"</span>: <span class="hljs-number">1800000000000000</span>},
-    {<span class="hljs-attr">"epoch"</span>: <span class="hljs-number">7000</span>,<span class="hljs-attr">"amount"</span>: <span class="hljs-number">1800000000000000</span>}
+    {<span class="hljs-attr">"epoch"</span>: <span class="hljs-number">5000</span>,<span class="hljs-attr">"amount"</span>: <span class="hljs-number">100</span>},
+    {<span class="hljs-attr">"epoch"</span>: <span class="hljs-number">6000</span>,<span class="hljs-attr">"amount"</span>: <span class="hljs-number">100</span>},
+    {<span class="hljs-attr">"epoch"</span>: <span class="hljs-number">7000</span>,<span class="hljs-attr">"amount"</span>: <span class="hljs-number">100</span>}
   ]
 }
 </code></pre>
 <blockquote>
 <p>account：the specified account that will received ATP from the estricting plan.</p>
 <p>epoch：the number of epoch to wait for a transfer plan (Greater than or equal to 1)</p>
-<p>amount：the number of ATP to be transferred</p>
+<p>amount：the number of ATP to be transferred. Unit: ATP</p>
 </blockquote>
 <ul>
 <li>command line</li>
