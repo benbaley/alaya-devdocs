@@ -2535,31 +2535,31 @@ web3.utils.hexToBytes(<span class="hljs-number">0x000000ea</span>);
 </code></pre>
 <hr>
 <h4><a class="anchor" aria-hidden="true" id="web3utilstovon"></a><a href="#web3utilstovon" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>web3.utils.toVon</h4>
-<p>Converts any lat value value into von.</p>
+<p>Converts any atp value value into von.</p>
 <ul>
 <li>von</li>
 <li>kvon</li>
 <li>mvon</li>
 <li>gvon</li>
-<li>microlat</li>
-<li>millilat</li>
-<li>lat</li>
-<li>klat</li>
-<li>mlat</li>
-<li>glat</li>
-<li>tlat</li>
+<li>microatp</li>
+<li>milliatp</li>
+<li>atp</li>
+<li>katp</li>
+<li>matp</li>
+<li>gatp</li>
+<li>tatp</li>
 </ul>
 <pre><code class="hljs">'von':          '1',
 'kvon':         '<span class="hljs-number">1000</span>',
 'mvon':         '<span class="hljs-number">100000</span>0',
 'gvon':         '<span class="hljs-number">1000000000</span>',
-'microlat':     '<span class="hljs-number">100000000000</span>0',
-'millilat':     '<span class="hljs-number">10000000000000</span>00',
-'lat':          '<span class="hljs-number">10000000000000</span><span class="hljs-number">0000</span>0',
-'klat':         '<span class="hljs-number">10000000000000</span><span class="hljs-number">00000000</span>',
-'mlat':         '<span class="hljs-number">10000000000000</span><span class="hljs-number">0000000000</span>0',
-'glat':         '<span class="hljs-number">10000000000000</span><span class="hljs-number">00000000000000</span>',
-'tlat':         '<span class="hljs-number">10000000000000</span><span class="hljs-number">00000000000000</span>000'
+'microatp':     '<span class="hljs-number">100000000000</span>0',
+'milliatp':     '<span class="hljs-number">10000000000000</span>00',
+'atp':          '<span class="hljs-number">10000000000000</span><span class="hljs-number">0000</span>0',
+'katp':         '<span class="hljs-number">10000000000000</span><span class="hljs-number">00000000</span>',
+'matp':         '<span class="hljs-number">10000000000000</span><span class="hljs-number">0000000000</span>0',
+'gatp':         '<span class="hljs-number">10000000000000</span><span class="hljs-number">00000000000000</span>',
+'tatp':         '<span class="hljs-number">10000000000000</span><span class="hljs-number">00000000000000</span>000'
 </code></pre>
 <p>Method:</p>
 <pre><code class="hljs">web3.utils.<span class="hljs-keyword">to</span><span class="hljs-constructor">Von(<span class="hljs-params">number</span> [, <span class="hljs-params">unit</span>])</span>
@@ -2567,41 +2567,41 @@ web3.utils.hexToBytes(<span class="hljs-number">0x000000ea</span>);
 <p>Parameter:</p>
 <ul>
 <li><code>number</code> - <code>String|Number|BN</code>: The value.</li>
-<li><code>unit</code> - String，(optional, defaults to &quot;lat&quot;): The ether to convert from.</li>
+<li><code>unit</code> - String，(optional, defaults to &quot;atp&quot;): The ether to convert from.</li>
 </ul>
 <p>Returns:</p>
 <p><code>String|BN</code>: If a string is given it returns a number string, otherwise a <a href="https://github.com/indutny/bn.js/">BN.js</a> instance.</p>
 <p>Example:</p>
-<pre><code class="hljs css language-js">web3.utils.toVon(<span class="hljs-string">'1'</span>, <span class="hljs-string">'lat'</span>);
+<pre><code class="hljs css language-js">web3.utils.toVon(<span class="hljs-string">'1'</span>, <span class="hljs-string">'atp'</span>);
 &gt; <span class="hljs-string">"1000000000000000000"</span>
 </code></pre>
 <hr>
 <h4><a class="anchor" aria-hidden="true" id="web3utilsfromvon"></a><a href="#web3utilsfromvon" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>web3.utils.fromVon</h4>
-<p>Converts any von value into a lat value.</p>
+<p>Converts any von value into a atp value.</p>
 <p>Method:</p>
 <pre><code class="hljs"><span class="hljs-selector-tag">web3</span><span class="hljs-selector-class">.utils</span><span class="hljs-selector-class">.fromVon</span>(<span class="hljs-selector-tag">number</span> <span class="hljs-selector-attr">[, unit]</span>)
 </code></pre>
-<p>Converts any von value into a lat value.</p>
+<p>Converts any von value into a atp value.</p>
 <p>Parameter:</p>
 <p><code>number</code> - <code>String|Number|BN</code>: The value in von.
-<code>unit</code> - <code>String</code>，(optional, defaults to &quot;lat&quot;): The ether to convert to. Possible units are:</p>
+<code>unit</code> - <code>String</code>，(optional, defaults to &quot;atp&quot;): The ether to convert to. Possible units are:</p>
 <ul>
 <li>von</li>
 <li>kvon</li>
 <li>mvon</li>
 <li>gvon</li>
-<li>microlat</li>
-<li>millilat</li>
-<li>lat</li>
-<li>klat</li>
-<li>mlat</li>
-<li>glat</li>
-<li>tlat</li>
+<li>microatp</li>
+<li>milliatp</li>
+<li>atp</li>
+<li>katp</li>
+<li>matp</li>
+<li>gatp</li>
+<li>tatp</li>
 </ul>
 <p>Returns:</p>
 <p><code>String|BN</code>: It always returns a string number.</p>
 <p>Example:</p>
-<pre><code class="hljs css language-js">web3.utils.fromVon(<span class="hljs-string">'1'</span>, <span class="hljs-string">'lat'</span>);
+<pre><code class="hljs css language-js">web3.utils.fromVon(<span class="hljs-string">'1'</span>, <span class="hljs-string">'atp'</span>);
 &gt; <span class="hljs-string">"0.000000000000000001"</span>
 </code></pre>
 <hr>

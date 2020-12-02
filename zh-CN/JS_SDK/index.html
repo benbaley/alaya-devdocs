@@ -2562,25 +2562,25 @@ web3.utils.hexToBytes(<span class="hljs-number">0x000000ea</span>);
 <li>kvon</li>
 <li>mvon</li>
 <li>gvon</li>
-<li>microlat</li>
-<li>millilat</li>
-<li>lat</li>
-<li>klat</li>
-<li>mlat</li>
-<li>glat</li>
-<li>tlat</li>
+<li>microatp</li>
+<li>milliatp</li>
+<li>atp</li>
+<li>katp</li>
+<li>matp</li>
+<li>gatp</li>
+<li>tatp</li>
 </ul>
 <pre><code class="hljs">'von':          '1',
 'kvon':         '<span class="hljs-number">1000</span>',
 'mvon':         '<span class="hljs-number">100000</span>0',
 'gvon':         '<span class="hljs-number">1000000000</span>',
-'microlat':     '<span class="hljs-number">100000000000</span>0',
-'millilat':     '<span class="hljs-number">10000000000000</span>00',
-'lat':          '<span class="hljs-number">10000000000000</span><span class="hljs-number">0000</span>0',
-'klat':         '<span class="hljs-number">10000000000000</span><span class="hljs-number">00000000</span>',
-'mlat':         '<span class="hljs-number">10000000000000</span><span class="hljs-number">0000000000</span>0',
-'glat':         '<span class="hljs-number">10000000000000</span><span class="hljs-number">00000000000000</span>',
-'tlat':         '<span class="hljs-number">10000000000000</span><span class="hljs-number">00000000000000</span>000'
+'microatp':     '<span class="hljs-number">100000000000</span>0',
+'milliatp':     '<span class="hljs-number">10000000000000</span>00',
+'atp':          '<span class="hljs-number">10000000000000</span><span class="hljs-number">0000</span>0',
+'katp':         '<span class="hljs-number">10000000000000</span><span class="hljs-number">00000000</span>',
+'matp':         '<span class="hljs-number">10000000000000</span><span class="hljs-number">0000000000</span>0',
+'gatp':         '<span class="hljs-number">10000000000000</span><span class="hljs-number">00000000000000</span>',
+'tatp':         '<span class="hljs-number">10000000000000</span><span class="hljs-number">00000000000000</span>000'
 </code></pre>
 <p>调用：</p>
 <pre><code class="hljs">web3.utils.<span class="hljs-keyword">to</span><span class="hljs-constructor">Von(<span class="hljs-params">number</span> [, <span class="hljs-params">unit</span>])</span>
@@ -2588,12 +2588,12 @@ web3.utils.hexToBytes(<span class="hljs-number">0x000000ea</span>);
 <p>参数：</p>
 <ul>
 <li><code>number</code> - String|Number|BN: 金额</li>
-<li><code>unit</code> - String，可选，默认值为<code>ether</code></li>
+<li><code>unit</code> - String，可选，默认值为<code>atp</code></li>
 </ul>
 <p>返回值：</p>
 <p><code>String|BN</code>: 如果输入参数是数值或字符串，则返回字符串，否则返回BN.js对象</p>
 <p>示例代码：</p>
-<pre><code class="hljs css language-js">web3.utils.toVon(<span class="hljs-string">'1'</span>, <span class="hljs-string">'lat'</span>);
+<pre><code class="hljs css language-js">web3.utils.toVon(<span class="hljs-string">'1'</span>, <span class="hljs-string">'atp'</span>);
 &gt; <span class="hljs-string">"1000000000000000000"</span>
 </code></pre>
 <hr>
@@ -2602,27 +2602,27 @@ web3.utils.hexToBytes(<span class="hljs-number">0x000000ea</span>);
 <p>调用：</p>
 <pre><code class="hljs"><span class="hljs-selector-tag">web3</span><span class="hljs-selector-class">.utils</span><span class="hljs-selector-class">.fromVon</span>(<span class="hljs-selector-tag">number</span> <span class="hljs-selector-attr">[, unit]</span>)
 </code></pre>
-<p>Converts any von value into a lat value.</p>
+<p>Converts any von value into a atp value.</p>
 <p>参数：</p>
 <p><code>number</code> - String|Number|BN: VON为单位的数值
-<code>unit</code> - String，可选，默认值为<code>lat</code>，可选的单位有：</p>
+<code>unit</code> - String，可选，默认值为<code>atp</code>，可选的单位有：</p>
 <ul>
 <li>von</li>
 <li>kvon</li>
 <li>mvon</li>
 <li>gvon</li>
-<li>microlat</li>
-<li>millilat</li>
-<li>lat</li>
-<li>klat</li>
-<li>mlat</li>
-<li>glat</li>
-<li>tlat</li>
+<li>microatp</li>
+<li>milliatp</li>
+<li>atp</li>
+<li>katp</li>
+<li>matp</li>
+<li>gatp</li>
+<li>tatp</li>
 </ul>
 <p>返回值：</p>
 <p><code>String|BN</code>: 如果输入参数是数值或字符串，则返回字符串，否则返回BN.js对象</p>
 <p>示例代码：</p>
-<pre><code class="hljs css language-js">web3.utils.fromVon(<span class="hljs-string">'1'</span>, <span class="hljs-string">'lat'</span>);
+<pre><code class="hljs css language-js">web3.utils.fromVon(<span class="hljs-string">'1'</span>, <span class="hljs-string">'atp'</span>);
 &gt; <span class="hljs-string">"0.000000000000000001"</span>
 </code></pre>
 <hr>
